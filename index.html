@@ -1,7 +1,226 @@
 <!DOCTYPE html>
-<html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Connor Brennan | Data Scientist</title>
+  <style>
+    :root {
+      --bg-light: #f9f9f9;
+      --text-light: #222;
+      --bg-dark: #1e1e1e;
+      --text-dark: #eee;
+      --accent: #0366d6;
+      --card-bg-light: #fff;
+      --card-bg-dark: #2c2c2c;
+    }
+
+    [data-theme="light"] {
+      background-color: var(--bg-light);
+      color: var(--text-light);
+    }
+
+    [data-theme="dark"] {
+      background-color: var(--bg-dark);
+      color: var(--text-dark);
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+      margin: 0;
+      padding: 2rem;
+      max-width: 900px;
+      margin: auto;
+      transition: background-color 0.3s, color 0.3s;
+    }
+
+    header {
+      text-align: center;
+      margin-bottom: 2rem;
+    }
+
+    h1 {
+      font-size: 2.5rem;
+      margin-bottom: 0.2em;
+    }
+
+    h2 {
+      color: inherit;
+      font-size: 1.5rem;
+      margin-top: 0;
+    }
+
+    .badges {
+      margin-top: 1rem;
+    }
+
+    .badge {
+      display: inline-block;
+      background: #e0e0e0;
+      color: #333;
+      border-radius: 1rem;
+      padding: 0.3rem 0.8rem;
+      margin: 0.3rem;
+      font-size: 0.85rem;
+      font-weight: 500;
+    }
+
+    [data-theme="dark"] .badge {
+      background: #444;
+      color: #ddd;
+    }
+
+	.toggle-theme {
+	  position: absolute;
+	  top: 1rem;
+	  right: 1rem;
+	  background: none;
+	  border: none;
+	  font-size: 1.5rem;
+	  cursor: pointer;
+	  transition: transform 0.2s;
+	  color: inherit;
+	}
+
+	.toggle-theme:hover {
+	  transform: scale(1.1);
+	}
+
+
+	[data-theme="light"] .toggle-theme {
+	  background-color: #ffffff;
+	  color: #222;
+	  border-color: #ccc;
+	}
+
+	[data-theme="dark"] .toggle-theme {
+	  background-color: #333;
+	  color: #eee;
+	  border-color: #666;
+	}
+
+
+    .content p {
+      line-height: 1.6;
+      margin-bottom: 1.2rem;
+    }
+
+    .projects {
+      margin-top: 2rem;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 1rem;
+    }
+
+    .card {
+      background: var(--card-bg-light);
+      padding: 1rem;
+      border-radius: 0.75rem;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+      transition: background 0.3s;
+    }
+
+    [data-theme="dark"] .card {
+      background: var(--card-bg-dark);
+      box-shadow: 0 1px 3px rgba(255,255,255,0.05);
+    }
+
+    .card h3 {
+      margin-top: 0;
+    }
+
+    .card p {
+      font-size: 0.9rem;
+    }
+
+    a {
+      color: var(--accent);
+      text-decoration: none;
+    }
+
+    a:hover {
+      text-decoration: underline;
+    }
+  </style>
+</head>
 <body>
-<h1>Connor Brennan - Data scientist</h1>
-<p>Trying out using GitHub pages.</p>
+  <button class="toggle-theme" onclick="toggleTheme()" id="themeToggle" title="Toggle dark mode on">🌞</button>
+
+  <header>
+    <h1>Connor Brennan</h1>
+    <h2>Data Scientist</h2>
+    <p>Solving real business problems with practical data science.</p>
+    <div class="badges">
+      <span class="badge">Python</span>
+      <span class="badge">SQL</span>
+      <span class="badge">Excel</span>
+      <span class="badge">Power BI</span>
+      <span class="badge">Databricks</span>
+    </div>
+  </header>
+
+  <div class="content">
+    <p>
+      I'm a data scientist with over six years of experience working in a fast-paced, data-first, customer-focused marketing agency.
+      I specialise in turning open-ended business questions into impactful, data-driven solutions.
+    </p>
+    <p>
+      From predictive modelling and recommendation systems to dashboarding, experimentation, and forecasting — I've helped brands
+      across fashion, travel, finance, food & drink, subscriptions and retail make sense of their data and act on it.
+    </p>
+    <p>
+      Soon you will be able to explore some of my public projects on <a href="https://github.com/CBrennan-data" target="_blank">GitHub</a>.
+    </p>
+    <p>
+      Below are place holders, bear with me whilst I get this all up and running!
+    </p>
+	
+    <section class="projects">
+      <div class="card">
+        <h3>Control Model - Experiment Design</h3>
+        <p>A PySpark based model which uses synthetic control methods to find the best control group for a test. For use where randomisation isn't feasible.</p>
+      </div>
+      <div class="card">
+        <h3>Store Closure Impact Measurement</h3>
+        <p>Statistical framework to assess impact of closures on regional KPIs.</p>
+      </div>
+      <div class="card">
+        <h3>Ad Response Prediction</h3>
+        <p>Classification model predicting likelihood of response to a trigger (in this case, mailing) for individual customers.</p>
+      </div>
+    </section>
+  </div>
+
+	<script>
+	  function toggleTheme() {
+		const html = document.documentElement;
+		const button = document.getElementById('themeToggle');
+		const isLight = html.getAttribute('data-theme') === 'light';
+		const newTheme = isLight ? 'dark' : 'light';
+		
+		html.setAttribute('data-theme', newTheme);
+		button.textContent = newTheme === 'light' ? '🌞' : '🌙';
+		button.title = newTheme === 'light' 
+		  ? 'Toggle dark mode on' 
+		  : 'Toggle dark mode off';
+	  }
+
+	  // Set initial icon and tooltip based on system preference
+	  window.onload = () => {
+		const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+		const theme = prefersDark ? 'dark' : 'light';
+		const button = document.getElementById('themeToggle');
+
+		document.documentElement.setAttribute('data-theme', theme);
+		button.textContent = theme === 'light' ? '🌞' : '🌙';
+		button.title = theme === 'light' 
+		  ? 'Toggle dark mode on' 
+		  : 'Toggle dark mode off';
+	  };
+	</script>
+
+  <footer style="margin-top: 3rem; text-align: center; font-size: 0.9rem; opacity: 0.8;">
+    <p>📫 Get in touch: <a href="mailto:cbrennan.data@gmail.com">cbrennan.data@gmail.com</a></p>
+  </footer>
 </body>
 </html>
